@@ -16,4 +16,12 @@ app.post("/sign-up", (req, res) => {
   res.send("OK");
 });
 
+app.post("/tweets", (req, res) => {
+  const body = req.body;
+
+  tweets.unshift(body);
+  console.log("tweets", tweets);
+  res.send("OK");
+});
+
 app.listen(5000, () => console.log("App ativo na porta 5000"));
