@@ -24,4 +24,23 @@ app.post("/tweets", (req, res) => {
   res.send("OK");
 });
 
+app.get("/tweets", (req, res) => {
+  if (tweets.length === 0) {
+    res.send(tweets);
+    return;
+  }
+
+  const newTweets = [];
+
+  for (let i = 0; i < 10 && i < tweets.length; i++) {
+    const use = users.find((u) => tweets[i].username === u.username);
+    console.log("use", use);
+    newTweets.push({ ...use, tweet: tweets[i].tweet });
+
+    console.log("newTweets", newTweets);
+  }
+
+  res.send(newTweets);
+});
+
 app.listen(5000, () => console.log("App ativo na porta 5000"));
