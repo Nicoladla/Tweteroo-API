@@ -9,19 +9,31 @@ const users = [];
 const tweets = [];
 
 app.post("/sign-up", (req, res) => {
-  const body = req.body;
+  const { username, avatar } = req.body;
 
-  users.push(body);
-  console.log(users);
-  res.send("OK");
+  const isUndefined = username === undefined || avatar === undefined;
+  const isEmpty = username === "" || avatar === "";
+
+  if (isUndefined || isEmpty) {
+    return res.status(400).send("Todos os campos são obrigatórios!");
+  }
+
+  users.push({ username, avatar });
+  res.status(201).send("OK");
 });
 
 app.post("/tweets", (req, res) => {
-  const body = req.body;
+  const { username, tweet } = req.body;
 
-  tweets.unshift(body);
-  console.log("tweets", tweets);
-  res.send("OK");
+  const isUndefined = username === undefined || tweet === undefined;
+  const isEmpty = username === "" || tweet === "";
+
+  if (isUndefined || isEmpty) {
+    return res.status(400).send("Todos os campos são obrigatórios!");
+  }
+
+  tweets.unshift({ username, tweet });
+  res.status(201).send("OK");
 });
 
 app.get("/tweets", (req, res) => {
@@ -34,10 +46,8 @@ app.get("/tweets", (req, res) => {
 
   for (let i = 0; i < 10 && i < tweets.length; i++) {
     const use = users.find((u) => tweets[i].username === u.username);
-    console.log("use", use);
-    newTweets.push({ ...use, tweet: tweets[i].tweet });
 
-    console.log("newTweets", newTweets);
+    newTweets.push({ ...use, tweet: tweets[i].tweet });
   }
 
   res.send(newTweets);
