@@ -14,6 +14,12 @@ app.post("/sign-up", (req, res) => {
   const isUndefined = username === undefined || avatar === undefined;
   const isEmpty = username === "" || avatar === "";
 
+  const isRegistered = users.find((u) => u.username === username);
+
+  if (isRegistered) {
+    return res.status(409).send("Usuário já cadastrado!");
+  }
+
   if (isUndefined || isEmpty) {
     return res.status(400).send("Todos os campos são obrigatórios!");
   }
@@ -23,7 +29,10 @@ app.post("/sign-up", (req, res) => {
 });
 
 app.post("/tweets", (req, res) => {
-  const { username, tweet } = req.body;
+  const { tweet } = req.body;
+  const username = req.headers.user;
+
+  console.log(".user", username);
 
   const isUndefined = username === undefined || tweet === undefined;
   const isEmpty = username === "" || tweet === "";
@@ -38,19 +47,24 @@ app.post("/tweets", (req, res) => {
 
 app.get("/tweets", (req, res) => {
   if (tweets.length === 0) {
-    res.send(tweets);
-    return;
+    return res.send(tweets);
   }
 
-  const newTweets = [];
+  tweets.forEach((tweet) => {
+    const {avatar} = users.find((user) => user.username === tweet.username)
+  
+    tweet.avatar = avatar;
+  });
 
-  for (let i = 0; i < 10 && i < tweets.length; i++) {
-    const use = users.find((u) => tweets[i].username === u.username);
+  res.send(tweets.slice(0, 10));
+});
 
-    newTweets.push({ ...use, tweet: tweets[i].tweet });
-  }
+app.get("/tweets/:USERNAME", (req, res) => {
+  const user = req.params.USERNAME;
 
-  res.send(newTweets);
+  const listTweets = tweets.filter((tweet) => tweet.username === user);
+
+  res.send(listTweets);
 });
 
 app.listen(5000, () => console.log("App ativo na porta 5000"));
