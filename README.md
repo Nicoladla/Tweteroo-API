@@ -1,6 +1,10 @@
 ## Informações técnicas
 
-Essa aplicação foi desenvolvida utilizando as tecnologias:
+###  Observações:
+
+* O Armazenamento de dados da API é feito em memória, ou seja, os dados são armazenados dentro de Arrays. Como consequência, caso a aplicação seja reiniciada, os dados salvos serão perdidos;
+
+### Tecnologias utilizadas:
 
 - **Desenvolvimento**:
   - Nodemon.
