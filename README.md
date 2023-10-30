@@ -6,7 +6,8 @@ Com essa API, o usuário poderá:
 
   * Criar um perfil;
   * Fazer postagens curtas (tweets);
-  * Visualizar postagens de um perfil em específico.
+  * Visualizar os 10 últimos tweets;
+  * Visualizar tweets de um perfil em específico.
 
 ---
 
