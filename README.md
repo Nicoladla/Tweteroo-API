@@ -1,3 +1,46 @@
+# Tweteroo
+
+Esta é uma API inspirada no Twitter, que tem o objetivo de fornecer funcionalidades básicas para uma rede social.
+
+Com essa API, o usuário poderá:
+
+  * Criar um perfil;
+  * Fazer postagens curtas (tweets);
+  * Visualizar postagens de um perfil em específico.
+
+---
+
+## Confira como usar os recursos da API:
+
+**1- Para criar sua conta:**
+
+  * Método: **`POST`**;
+  * Rota: **`/sign-up`**;
+  
+  - Você deverá enviar o nome de usuário (**username**) e a url da foto do seu perfil (**avatar**). Você fará isso enviando, pelo `body` da requisição, os dados no seguinte formato:
+  
+    ```
+    {
+      username: "bobesponja",
+      avatar: "https://image..."
+    } 
+    ```
+
+  * Status Code:
+    * Ocorre quando tudo dá certo:
+    
+      ```
+        status: 201 
+        message: OK
+      ```
+
+    * Ocorre quando algum campo está vazio ou em um formato inválido:
+
+      ```
+        status: 400
+        message: Todos os campos são obrigatórios!
+      ```
+
 ## Informações técnicas
 
 ###  Observações:
