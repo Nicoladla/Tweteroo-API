@@ -42,6 +42,34 @@ Com essa API, o usuário poderá:
         message: Todos os campos são obrigatórios!
       ```
 
+**2- Para postar um tweet:**
+
+  * Método: **`POST`**;
+  * Rota: **`/tweets`**;
+  
+  - Você deverá enviar o **username** e o **tweet**. Você fará isso enviando, o username por um `header` **`user`**. Já o tweet você enviará pelo `body` da requisição no seguinte formato:
+  
+    ```
+    {
+      tweet: "Eu amo o mar!"
+    }
+    ```
+
+  * Status Code:
+    * Ocorre quando tudo dá certo:
+    
+      ```
+        status: 201 
+        message: OK
+      ```
+
+    * Ocorre quando algum campo está vazio ou em um formato inválido:
+
+      ```
+        status: 400
+        message: Todos os campos são obrigatórios!
+      ```
+
 ## Informações técnicas
 
 ###  Observações:
