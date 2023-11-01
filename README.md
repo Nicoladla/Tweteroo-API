@@ -70,6 +70,25 @@ Com essa API, o usuário poderá:
         message: Todos os campos são obrigatórios!
       ```
 
+**3- Para obter os últimos 10 tweets publicados:**
+
+  * Método: **`GET`**;
+  * Rota: **`/tweets`**;
+
+  - Você receberá um array com os 10 últimos tweets e em cada objeto você terá: **username**, **avatar** e **tweet**. Exemplo:
+
+      ```
+      [
+        {
+          username: "bobesponja",
+          avatar: "https://image...",
+          tweet: "Eu amo o mar!"
+        }
+      ]
+    ```
+
+  * Status Code: `200`
+
 ## Informações técnicas
 
 ###  Observações:
