@@ -89,6 +89,26 @@ Com essa API, o usuário poderá:
 
   * Status Code: `200`
 
+**4- Para obter todos os tweets publicados por um usuário específico:**
+
+  * Método: **`GET`**;
+  * Rota: **`/tweets/:USERNAME`**;
+
+  - Você receberá um array com todos os tweets do usuário que você indicar na rota da requisição, no campo onde está `:USERNAME`. Em cada objeto você terá: **username**, **avatar** e **tweet**. Exemplo:
+
+      ```
+      [
+        {
+          username: "bobesponja",
+          avatar: "https://image...",
+          tweet: "Eu amo o mar!"
+        }
+      ]
+    ```
+
+  * Status Code: `200`
+---
+
 ## Informações técnicas
 
 ###  Observações:
@@ -129,9 +149,9 @@ Com essa API, o usuário poderá:
 
 - Por fim, ao executar esse comando, aparecerá no terminal o status da aplicação.
 
-- Agora você poderá fazer requisições para a API, usando como base, o link:
+- Agora você poderá fazer requisições para a API, usando como base, a url:
 
 
   ```
-  https://localhost:5000/
+  localhost:5000/
   ```
